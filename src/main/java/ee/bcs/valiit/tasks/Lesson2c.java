@@ -3,6 +3,9 @@ package ee.bcs.valiit.tasks;
 public class Lesson2c {
 
     public static void main(String[] args) {
+        System.out.println("Pikem jada on number " + sequence3n(10, 20));
+        //System.out.println("Järgmine x element " + nextElement(3));
+        //System.out.println("Jada x pikkus " + getSeqLength(2));
 
     }
 
@@ -27,7 +30,14 @@ public class Lesson2c {
     // kutsuge iga väärtuse korral välja meetodit getSeqLength
     // salvestage maha kõige suurem ja funktsiooni lõpus tagastage see
     public static int sequence3n(int x, int y) {
-        return 0;
+        int suurimJada = 0;
+        for (int i = x; i <= y; i++){ // tsükkel, mis liigub x kuni y
+            int sum=getSeqLength(i);
+            if (sum>suurimJada){
+                suurimJada=sum;
+            }
+        }
+        return suurimJada;
     }
 
     // TODO 2
@@ -35,17 +45,28 @@ public class Lesson2c {
     // x = 2 -> 2
     // kutsuge välja meetodit nextElement nii kaua kuni vastus tuleb 1
     // tagastage korduste arv + 1
-    public static int getSeqLength(int x){
-        return 0;
+    public static int getSeqLength(int x) {
+        int jadaPikkus = 1;
+        while (x > 1) { //loop kestab kuni next element on suurem kui 1
+            x = nextElement(x);
+            jadaPikkus++;
+        }
+        return jadaPikkus;
     }
 
     // TODO 1
     // x = 1 -> 4
     // x = 2 -> 1
     // x = 3 -> 10
-    public static int nextElement(int x){
+    public static int nextElement(int x) {
         // TODO tagasta sequence järgmine element
-        return 0;
+        int järgmine;
+        if (x % 2 == 0) { //kui arv on paaris
+            järgmine = x / 2;
+        } else { //kui arv on paaritu
+            järgmine = x * 3 + 1;
+        }
+        return järgmine;
     }
 
 }
