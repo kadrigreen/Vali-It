@@ -33,6 +33,8 @@ public class Lesson4 {
                 accountBalanceMap.put(accountNr, 0.0);
                 System.out.println("Your account number is " + accountNr);
                 System.out.println(" ");  // tühi rida enne uue funktsiooni valikut
+
+
             } else if (function == 2) {
                 System.out.println("Get Balance. Insert account number.");
                 String accountNr = scanner.next();

@@ -45,7 +45,7 @@ public class Lesson3 {
         if (x == 0 || x == 1) {
             return false;
         } else {
-            for (int i = 2; i <= x; i++) { //tsükkel 2 kuni x
+            for (int i = 2; i <=  x; i++) { //tsükkel 2 kuni x // i<= Math.sqrt(x)
                 //2, 3, 4, 5
                 if (x % i == 0) {        //kui x jagatud iseendaga on jääk 0, tähendab on prime number
                     return false;
@@ -82,18 +82,21 @@ public class Lesson3 {
 
     public static int evenFibonacci(int x) {
         // TODO liida kokku kõik paaris fibonacci arvud kuni numbrini x
-        if (x < 2) {
-            return 0;
-        }
         int fib1 = 0;
         int fib2 = 1;
-        int fib3;
-        int summa = 0;
+        int sum = 0;
+        while (fib2 <= x) {
+            int fib3 = fib1;
+            fib1 = fib2;
+            fib2 = fib3 + fib2;
+            if (fib1 % 2 == 0) {
+                sum += fib1;
+            }
+        }
+            return sum;
 
+        }
 
-        return 0;
-
-    }
 
 
     public static String morseCode(String text) {
@@ -109,10 +112,10 @@ public class Lesson3 {
 
         String a = ""; //määra muutujale a väärtus
         for (int i = 0; i <= text.length(); i++) {    // tsükkel nullist kuni sisend teksti pikkuseni
-            String l = text.substring(i, i + 1); // uus muutuja l, mille väärtuseks on
-            // sisend stringi positsioon i-st kuni i+1-ni
+            char c = text.charAt(i); // uus muutuja c, mille väärtuseks on
+            // sisend stringi positsioon i-st
 
-            a = a + morseKood.get(l) + ""; // muutuja a saab väärtuse a+l
+            a = a + morseKood.get(c) + ""; // muutuja a saab väärtuse
 
         }
 

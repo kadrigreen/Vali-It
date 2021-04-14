@@ -13,6 +13,8 @@ public class Lesson2 {
         System.out.println("Pikem jada on number " + sequence3n(10, 20));
         System.out.println("Järgmine x element " + nextElement(3));
         System.out.println("Jada x pikkus " + getSeqLength(1));
+        System.out.println(evenNumbers(5));
+        //System.out.println(Arrays.toString(minElement));
 
     }
 
@@ -33,10 +35,13 @@ public class Lesson2 {
     public static int[] evenNumbers(int n) {
         int[] returnArray = new int[n];//
         for (int i = 0; i < n; i++) {
-            returnArray[i] = (i + 1) * 2;
+            returnArray[i] =i*2+2;
         }
-        return returnArray;
+            return returnArray;
+
     }
+
+
 
     // TODO, leia massiivi kõige väiksem element
     public static int min(int[] x) {
