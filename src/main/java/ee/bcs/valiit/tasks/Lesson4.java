@@ -11,6 +11,7 @@ public class Lesson4 {
 
     public static void main(String[] args) {
 
+
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Choose action: \n" +
@@ -133,6 +134,7 @@ public class Lesson4 {
             }
         }
     }
+
 
 
 }
