@@ -90,9 +90,8 @@ public class BankController1 {
 
     //  Lock account
 //    http://localhost:8081/accountLocked/EE123/accountLocked
-   /* @GetMapping("accountLocked/{accountNr}/{lock}")
-    public String accountLocked(@PathVariable("accountNr") String accountNr,
-                                @PathVariable("accountLocked") boolean accountLocked) {
+   /* @GetMapping("accountLocked/{accountNr}")
+    public String accountLocked(@PathVariable("accountNr") String accountNr) {
     }*/
 
     //  Unlock account

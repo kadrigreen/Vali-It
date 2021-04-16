@@ -37,5 +37,10 @@ public class BankAccountInfo {
         this.accountLocked = accountLocked;
     }
 
-    private boolean accountLocked;
+    private boolean accountLocked=false;
+
+    // meetod blockAccount
+    public void accountLocked(){
+        accountLocked=true;
+    }
 }
