@@ -5,16 +5,11 @@ public class Ex2 {
 
     }
    public static int nthPower(int[] array, int n) {
-       int[] newArray = new int[array.length];
-       for (int i = 0; i < array.length; i++) {
-           if (n < 0 || array.length - 1 > n) {
+           if (n < 0 || array.length <= n) {
                return -1;
            } else {
-               n=array.length;
-
+               return (int) Math.pow(array[n], n);
            }
-       }
-       return 0;
    }
 
 //    You are given an array with positive numbers and a non-negative number N.

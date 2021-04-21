@@ -64,4 +64,11 @@ public class BankController1 {
                                  @PathVariable("amount") double amount) {
         return bankService.transferMoney(fromAccount, toAccount, amount);
     }
+
+    // transaction history
+    // http://localhost:8081/transactionHistory/EE1111
+    @GetMapping("transactionHistory/{accountNr}")
+    public String transactionHistory(@PathVariable ("accountNr") String accountNr){
+        return "";
+    }
 }
