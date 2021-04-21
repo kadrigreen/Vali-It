@@ -44,4 +44,13 @@
             <column name="name" type="text"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="2021-04-21 accounts_rename" author="kadri">
+        <renameColumn tableName="accounts" oldColumnName="account_nr" newColumnName="account_number"/>
+    </changeSet>
+<changeSet id="2021-04-22 accounts_delete_column_locked" author="kadri">
+    <dropColumn tableName="accounts" columnName="account_locked"/>
+</changeSet>
+
 </databaseChangeLog>
+
