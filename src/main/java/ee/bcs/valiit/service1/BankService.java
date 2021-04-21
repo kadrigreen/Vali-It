@@ -1,6 +1,7 @@
 package ee.bcs.valiit.service1;
 
 import ee.bcs.valiit.repository1.BankRepository;
+import ee.bcs.valiit.solution.exception.SampleApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,9 @@ public class BankService {
 
     public void createAccount(String accountNr, Double balance, String name) {
         bankRepository.createAccount(accountNr, balance, name);
+        if(balance < 0){
+            throw new SampleApplicationException("Negative amount");
+        }
     }
 
     public String getBalance(String accountNr) {
