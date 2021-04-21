@@ -57,4 +57,8 @@ public class BankService {
             return "Invalid amount";
         }
     }
+
+    /*public List<> transactionHistory (String accountNr){
+        return  accountNr+" transaction history: ";
+    }*/
 }

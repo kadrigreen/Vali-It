@@ -38,5 +38,11 @@ public class BankRepository {
         paramMap.put("dbAccountNr", accountNr);
         jdbcTemplate.update(addToSql, paramMap);
     }
+    /*public List<> transactionHistory( String accountNr){
+        String sql = " select * from accounts where account_number = :dbAccountNr";
+        Map<String, Object>paramMap = new HashMap<>();
+        paramMap.put("dbAccountNr", accountNr);
+        List<Transaction> transactionList= jdbcTemplate.queryForObject(sql, paramMap, new BankAccountRowMapper());
+    }*/
 
 }

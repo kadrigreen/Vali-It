@@ -67,8 +67,8 @@ public class BankController1 {
 
     // transaction history
     // http://localhost:8081/transactionHistory/EE1111
-    @GetMapping("transactionHistory/{accountNr}")
-    public String transactionHistory(@PathVariable ("accountNr") String accountNr){
-        return "";
-    }
+    /*@GetMapping("transactionHistory/{accountNr}")
+    public List<> transactionHistory(@PathVariable ("accountNr") String accountNr){
+        return bankService.transactionHistory(accountNr);
+    }*/
 }
