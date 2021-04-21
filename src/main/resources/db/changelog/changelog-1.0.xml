@@ -33,4 +33,15 @@
             <column name="phone" type="text"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="2021-04-21 accounts" author="kadri">
+        <createTable tableName="accounts">
+            <column name="account_nr" type="text"  >
+                <constraints primaryKey="true" />
+            </column>
+            <column name="balance" type="numeric"/>
+            <column name="account_locked" type="bool" />
+            <column name="name" type="text"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
