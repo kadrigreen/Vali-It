@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,14 +19,14 @@ public class SampleBankController {
     private SampleBankService sampleBankService;
 
     // http://localhost:8080/sample/bank/createAccount?accountNr=EE128&balance=2500
-    @GetMapping("sample/bank/createAccount")
+    /*@GetMapping("sample/bank/createAccount")
     public void createAccount(@RequestParam("accountNr") String accountNr,
                               @RequestParam("balance") Double balance) {
-        sampleBankService.createAccount(accountNr, balance);
-    }
+        sampleBankService.createAccount(accountNr, balance);*/
+   // }
 
     // http://localhost:8080/sample/bank/account
-    @PostMapping("sample/bank/account")
+    /*@PostMapping("sample/bank/account")
     public void createAccount2(@RequestBody SampleAccount request) {
         String sql = "INSERT INTO account(account_number, balance) VALUES(:dbAccNo, :dbAmount)";
         Map<String, Object> paramMap = new HashMap<>();
@@ -44,7 +43,7 @@ public class SampleBankController {
         paramMap.put("dbAccNo", accountNr);
         Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
         return "Konto balanss on: " + balance;
-    }
+    }*/
 
     @PutMapping("sample/bank/account/{accountNumber}/lock")
     public String lock(@PathVariable("accountNumber") String accountNr){
@@ -56,9 +55,9 @@ public class SampleBankController {
         return null;
     }
 
-    @GetMapping("sample/bank/account")
+    /*@GetMapping("sample/bank/account")
     public List<SampleAccount2> getAllAccounts(){
         String sql = "SELECT * FROM account";
         return jdbcTemplate.query(sql, new HashMap(), new SampleAccount2RowMapper());
-    }
+    }*/
 }

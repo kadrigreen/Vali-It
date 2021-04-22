@@ -1,6 +1,5 @@
 package ee.bcs.valiit.solution.service;
 
-import ee.bcs.valiit.solution.exception.SampleApplicationException;
 import ee.bcs.valiit.solution.repository.SampleAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -14,12 +13,12 @@ public class SampleBankService {
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
-    public void createAccount(String accountNr, Double balance) {
+    /*public void createAccount(String accountNr, Double balance) {
         if(balance < 0){
             throw new SampleApplicationException("Summa ei tohi olla negatiivne");
         }
-        accountRepository.createAccount(accountNr, balance);
-    }
+        accountRepository.createAccount(accountNr, balance);*/
+   // }
 
     /*public String getBalance(String accountNr){
         Double balance = accountRepository.getBalance(accountNr);
