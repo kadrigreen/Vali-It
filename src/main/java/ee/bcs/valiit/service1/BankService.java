@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 public class BankService {
     @Autowired
     private BankRepository bankRepository;
+    /*@Autowired
+    private AccountRepository hibernateAccountRepository;*/
 
     public void createAccount(String accountNr, Double balance, String name) {
         /*if(balance < 0){
