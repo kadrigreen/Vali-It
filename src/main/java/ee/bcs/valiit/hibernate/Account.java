@@ -7,7 +7,8 @@ import javax.persistence.Table;
 @Table(name="accounts")
 @Entity
 public class Account {
-
+    // @Id
+//@GeneratedValue (strategy=GenerationType.IDENTITY) kasutame siis kui meil on mingi id tulp või auto incremented tulp
     @Id private String accountNumber;
     private Double balance;
     private String name;
