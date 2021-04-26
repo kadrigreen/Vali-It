@@ -3,57 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <title>Bank</title>
-    <style>
-        body{background-color: lightgray;
-        background:linear-gradient(lightgray, lightslategray );
-        }
-        div{ border: 0.5rem outset midnightblue;
-            border-radius: 9px;
-            font: bold 1rem Seravek;
-            margin: 2rem;
-            padding: 1rem;
-            outline-offset: 0.5rem;
-            text-align: -webkit-right;
-            display: block;
-            float: left;
-        }
-    </style>
+<link rel="stylesheet" href="bank.css" type="text/css">
+
 </head>
 <body>
 <h1> Pank </h1>
 <h2> Tere tulemast Panka </h2>
 <div>
-<h4> Loo konto </h4>
-    <p>
-<strong>Sisesta eesnimi ja perekonnanimi</strong> <input>
-<br>
-<strong>Sisesta kontonumber</strong> <input>
-<br>
-<label>Sisesta kontoseis</label> <input>
-    </p>
-<button type="submit">
-    Loo konto
-</button>
+    <table>
+        <h4> Loo konto </h4>
+        <tr>
+            <td>Sisesta eesnimi ja perekonnanimi</td>
+            <td><input id="name"></td>
+        </tr>
+        <tr>
+            <td> Sisesta kontonumber</td>
+            <td><input id="accountNumber"></td>
+        </tr>
+        <tr>
+            <td>Sisesta kontoseis</td>
+            <td><input id="balance"></td>
+        </tr>
+        <tr>
+            <td>Sisesta summa</td>
+            <td><input id="amount"></td>
+        </tr>
+    </table>
+    <button id="createAccountButton">
+        Loo konto
+    </button>
+    <button id="createGetBalanceButton"> Konto väljavõte</button>
+    <button id="createDepositMoney"> Konto sissemakse</button>
+    <button id="createWithdrawMoney"> Konto väljamakse</button>
 </div>
-<br>
-<hr>
-<h4> Vaata kontoseisu </h4>
-Sisesta kontonumber <input>
-<hr>
-<h4> Tee kontole sissemakse </h4>
-Sisesta kontonumber <input>
-<hr>
-<h4> Tee kontolt väljamakse </h4>
-<p>
-Sisesta kontonumber <input>
-<hr>
-<h4> Tee ülekanne </h4>
-Tee ülekanne kontolt <input>
-<br>
-Kontole <input>
-<br>
-Ülekande summa <input>
-</p>
+<script>
+    let accountNumber = document.getElementById("accountNumber");
+    let name = document.getElementById("name");
+    let balance = document.getElementById("balance");
+    let amount = document.getElementById("amount");
+    let createAccountButton = document.getElementById("createAccountButton");
+    let createGetBalanceButton = document.getElementById("createGetBalanceButton");
+    let createDepositMoney = document.getElementById("createDepositMoney");
+    let createWithdrawMoney = document.getElementById("createWithdrawMoney")
+    createAccountButton.onclick = function () {
+        fetch("http://localhost:8081/createAccount1/" + accountNumber.value + "/" + balance.value + "/" + name.value)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
 
+    }
+    createGetBalanceButton.onclick = function () {
+        fetch("http://localhost:8081/getBalance1/" + accountNumber.value)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+    createDepositMoney.onclick = function () {
+        fetch("http://localhost:8081/depositMoney1/" + accountNumber.value + "/" + amount.value)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+    createWithdrawMoney.onclick = function () {
+        fetch("http://localhost:8081/withdrawMoney1/" + accountNumber.value + "/" + amount.value)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+</script>
+<hr>
+<div>
+    <!--    <h4> Vaata kontoseisu </h4>
+        <p>
+            Kontonumber <input id="getBalanceAccount">
+        </p>
+        <button id="createGetBalanceButton"> Sisesta</button>
+    </div>
+    <script>
+        let getBalanceAccount = document.getElementById("getBalanceAccount");
+        let createGetBalanceButton = document.getElementById("createGetBalanceButton");
+        createGetBalanceButton.onclick = function () {
+            let requestObject = {
+                'getBalanceAccount': accountNumber.value,
+            }
+            fetch("http://localhost:8081/getBalance1/" + accountNumber.value)
+                .then (response=> response.text())
+                .then (function (response){
+                    alert (response)
+                })
+
+        }
+    </script>
+    <hr>
+    <div>-->
+    <h4> Tee kontole sissemakse </h4>
+    <p>
+        Kontonumber <input id="depositAccount">
+        <br>
+        Summa <input id="depositAmount">
+    </p>
+    <button id="depositMoneyButton"> Sisesta</button>
+    <p>
+        Selgitus: <span id="currentBalance"></span>
+    </p>
+</div>
+<script>
+    let depositAccount = document.getElementById("depositAccount");
+    let depositAmount = document.getElementById("depositAmount");
+    let depositMoneyButton = document.getElementById("depositMoneyButton");
+    let currentBalance= document.getElementById("currentBalance")
+    depositMoneyButton.onclick = function () {
+        fetch("http://localhost:8081/depositMoney1/" + depositAccount.value + "/" + depositAmount.value)
+            .then(response => response.text())
+            .then(text=> { currentBalance.innerText=text
+            })
+    }
+</script>
+<hr>
+<div>
+    <h4> Tee kontolt väljamakse </h4>
+    <p>
+        Kontonumber <input id="withdrawAccount">
+        <br>
+        Summa <input id="withdrawAmount">
+    </p>
+    <button id="withdrawMoneyButton"> Sisesta</button>
+    <p>
+        Selgitus: <span id="currentBalance2"></span>
+    </p>
+</div>
+<script>
+    let withdrawAccount = document.getElementById("withdrawAccount");
+    let withdrawAmount = document.getElementById("withdrawAmount");
+    let withdrawMoneyButton = document.getElementById("withdrawMoneyButton");
+    let currentBalance2= document.getElementById("currentBalance2")
+    withdrawMoneyButton.onclick = function () {
+        fetch("http://localhost:8081/withdrawMoney1/" + withdrawAccount.value + "/" + withdrawAmount.value)
+            .then(response => response.text())
+            .then(text => {
+                currentBalance2.innerText=text
+            })
+    }
+
+</script>
+<hr>
+<div>
+    <h4> Tee ülekanne </h4>
+    <table>
+    <p>
+        <tr>
+            <td>Kontolt</td>
+            <td><input id="fromAccount"></td>
+        </tr>
+        <tr>
+            <td>Kontole</td>
+            <td><input id="toAccount"></td>
+        </tr>
+        <tr>
+            <td>Summa</td>
+            <td><input id="transferAmount"></td>
+        </tr>
+    </p>
+    </table>
+    <button id="createTransferButton">Sisesta</button>
+    <p>
+        Selgitus: <span id="currentBalance3"></span>
+    </p>
+</div>
+<script>
+    let fromAccount = document.getElementById("fromAccount");
+    let toAccount = document.getElementById("toAccount");
+    let transferAmount = document.getElementById("transferAmount")
+    let createTransferButton = document.getElementById("createTransferButton");
+    let currentBalance3= document.getElementById("currentBalance3")
+    createTransferButton.onclick = function () {
+        fetch("http://localhost:8081/transferMoney1/" + fromAccount.value + "/" + toAccount.value + "/" + transferAmount.value)
+            .then(response => response.text())
+            .then(text=> {
+                currentBalance3.innerText=text
+            })
+    }
+
+</script>
 </body>
 </html>

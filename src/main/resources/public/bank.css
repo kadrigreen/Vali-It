@@ -1,0 +1,30 @@
+
+body {
+    background-color: lightgray;
+    background: linear-gradient(lightgray, lightslategray);
+
+}
+
+h1 {
+    text-align: center;
+    font: bold 4rem Futura;
+    text-shadow: 4px 4px 3px #98f;
+
+}
+
+h2 {
+    text-align: center;
+    font: 2rem "Snell Roundhand";
+
+}
+
+div {
+
+
+}
+
+button:hover {
+    cursor: pointer;
+
+}
+
