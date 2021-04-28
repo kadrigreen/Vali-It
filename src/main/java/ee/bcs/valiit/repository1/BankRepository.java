@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -38,11 +39,18 @@ public class BankRepository {
         paramMap.put("dbAccountNr", accountNr);
         jdbcTemplate.update(addToSql, paramMap);
     }
-    /*public List<> transactionHistory( String accountNr){
+
+/*
+    public List<> transactionHistory( String accountNr){
         String sql = " select * from accounts where account_number = :dbAccountNr";
         Map<String, Object>paramMap = new HashMap<>();
         paramMap.put("dbAccountNr", accountNr);
         List<Transaction> transactionList= jdbcTemplate.queryForObject(sql, paramMap, new BankAccountRowMapper());
     }*/
+
+    public List getAllAccounts (){
+        String sql = "select * from accounts";
+           return jdbcTemplate.query(sql, new HashMap(), new BankAccountRowMapper());
+    }
 
 }

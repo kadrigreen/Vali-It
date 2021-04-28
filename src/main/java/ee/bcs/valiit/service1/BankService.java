@@ -3,6 +3,7 @@ package ee.bcs.valiit.service1;
 import ee.bcs.valiit.hibernate.Account;
 import ee.bcs.valiit.hibernate.AccountRepository;
 import ee.bcs.valiit.repository1.BankRepository;
+import ee.bcs.valiit.solution.exception.SampleApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +21,33 @@ public class BankService {
         bankRepository.createAccount(accountNr, balance, name);
     }
 
-    public String getBalance(String accountNr) {
+    public Double getBalance(String accountNr) {
         Account account= hibernateAccountRepository.getOne(accountNr);
      // return "Your balance is: " + bankRepository.getBalance(accountNr); SQLi näide
-       return "Kontojääk on " + account.getBalance()+ " EUR.";
+       return account.getBalance();
 
     }
 
-    public String depositMoney(String accountNr, Double amount) {
-        if (amount > 0) {
+    public Double depositMoney(String accountNr, Double amount) {
+        if(amount < 0){
+            throw new SampleApplicationException("Negative amount");
+        } else {
+        double balance = bankRepository.getBalance(accountNr);
+            balance += amount;
+            bankRepository.updateBalance(accountNr, balance);
+            //return amount + " EUR lisatud kontole " + accountNr + ". Uus konto jääk on " + balance+ " EUR.";
+            return balance;
+        }
+
+        /*if (amount > 0) {
             double balance = bankRepository.getBalance(accountNr);
             balance += amount;
             bankRepository.updateBalance(accountNr, balance);
-            return amount + " EUR lisatud kontole " + accountNr + ". Uus konto jääk on " + balance+ " EUR.";
+            //return amount + " EUR lisatud kontole " + accountNr + ". Uus konto jääk on " + balance+ " EUR.";
+            return balance;
         } else {
-            return "Sisesta ainult positiivne summa.";
-        }
+            return -1.0;
+        }*/
     }
 
     public String withdrawMoney(String accountNr, Double amount) {
@@ -67,8 +79,11 @@ public class BankService {
             return "Kontol pole piisavalt raha.";
         }
     }
+//public List<AllAccounts> getAllAccounts(){
+//        return bankRepository.getAllAccounts();
+//}
 
     /*public List<> transactionHistory (String accountNr){
-        return  accountNr+" transaction history: ";
+        return  accountNr;
     }*/
 }
